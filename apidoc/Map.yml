@@ -1,0 +1,415 @@
+---
+name: Modules.Map
+summary: Add-on Map module
+description: |
+    ## Android
+
+    This module is a replacement for the built-in Titanium.Map module on Android, which uses the Google Maps API v1.
+    The Google Maps API v1 is deprecated and Google will no longer issue new Maps API v1 keys after March 3rd, 2013. New
+    applications should use this module on Android.
+
+    Applications with existing Maps API v1 keys can continue to use the Titanium.Map module on Android,
+    or transition to the new ti.map add-on module.
+
+    For more instructions and examples of using the module, refer to the
+    [Google Maps v2 for Android guide](http://docs.appcelerator.com/titanium/latest/#!/guide/Google_Maps_v2_for_Android).
+
+    ### Requirements
+
+    -   Google Maps API key (required for both development and production)
+    -   Google Play services SDK installed using the Android SDK manager
+    -   This module only works on Android devices.  This module is not supported on the Android emulator
+
+    ### Getting Started
+
+    -   Edit the `modules` section of your tiapp.xml file to include this module:
+
+            <ti:app>
+                <modules>
+                    <!-- Add this line to your modules section -->
+                    <module platform="android">ti.map</module>
+                </modules>
+            </ti:app>
+
+    -   Obtain a Google Maps API key.  For instructions, refer to the "Obtain and Add a Google API Key"
+        section in the
+        [Google Maps v2 for Android guide](http://docs.appcelerator.com/titanium/latest/#!/guide/Google_Maps_v2_for_Android).
+
+    -   Add the following `meta-tag` element to the Android manifest section of the tiapp.xml
+        file. You may need to add the `manifest` and `application` elements.
+
+            <ti:app>
+                <android xmlns:android="http://schemas.android.com/apk/res/android">
+                    <manifest>
+                        <application>
+                            <!-- Replace "PASTE YOUR GOOGLE MAPS API KEY HERE" with the Google API key you obtained -->
+                            <meta-data android:name="com.google.android.maps.v2.API_KEY"
+                                android:value="PASTE YOUR GOOGLE MAPS API KEY HERE"/>
+                        </application>
+                    </manifest>
+                </android>
+            </ti:app>
+
+    -   Instantiate the module with the `require('ti.map')` method, then make subsequent API calls with
+        the new map object.
+
+            var Map = require('ti.map');
+            var mapview = Map.createView({mapType:Map.NORMAL_TYPE});
+
+    ## iOS
+
+    This module is a replacement for the built-in Titanium.Map module on iOS.
+
+    For more instructions and examples of using the module, refer to the
+    [iOS Map Kit guide](http://docs.appcelerator.com/titanium/latest/#!/guide/iOS_Map_Kit).
+
+    ### Requirements
+
+    -   Applications using this module must be built using Xcode 5 or later.
+
+    ### Getting Started
+
+    -   Edit the `modules` section of your tiapp.xml file to include this module:
+
+            <ti:app>
+                <modules>
+                    <!-- Add this line to your modules section -->
+                    <module platform="iphone">ti.map</module>
+                </modules>
+            </ti:app>
+            
+    -   To use the `userLocation` property in iOS 8 and later, add either the
+        [`NSLocationWhenInUseUsageDescription`](https://developer.apple.com/library/prerelease/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW26)
+        or
+        [`NSLocationAlwaysUsageDescription`](https://developer.apple.com/library/prerelease/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW18)
+        key to the iOS plist section of the project's `tiapp.xml` file.
+
+            <ti:app>
+                <ios>
+                    <plist>
+                        <dict>
+                            <key>NSLocationAlwaysUsageDescription</key>
+                            <string>
+                                Specify the reason for accessing the user's location information.
+                                This appears in the alert dialog when asking the user for permission to
+                                access their location.
+                            </string>
+                        </dict>
+                    </plist>
+                </ios>
+            </ti:app>
+
+    -   Instantiate the module with the `require('ti.map')` method, then make subsequent API calls with
+        the new map object.
+
+            var Map = require('ti.map');
+            var mapview = Map.createView({mapType:Map.NORMAL_TYPE});
+
+    ### Breaking Changes
+
+    -   The `addRoute` method no longer accepts a dictionary as a parameter. Pass a <Modules.Map.Route> object instead.
+
+
+extends: Titanium.Module
+since: { android: "3.1.0", iphone: "3.2.0", ipad: "3.2.0" }
+platforms: [android, iphone, ipad]
+excludes:
+    methods: [addEventListener, fireEvent, removeEventListener]
+    properties: [bubbleParent]
+properties:
+
+  - name: ANNOTATION_DRAG_STATE_START
+    summary: |
+        Used in the [pinchangedragstate](Modules.Map.View.pinchangedragstate) event
+        to indicate that the user started dragging the annotation.
+    type: Number
+    permission: read-only
+    since: "3.1.0"
+
+  - name: ANNOTATION_DRAG_STATE_END
+    summary: |
+        Used in the [pinchangedragstate](Modules.Map.View.pinchangedragstate) event
+        to indicate that the user finished moving the annotation.
+    type: Number
+    permission: read-only
+    since: "3.1.0"
+
+  - name: ANNOTATION_GREEN
+    summary: |
+        Color constant used to set a map annotation to green via the
+        <Modules.Map.Annotation.pincolor> property.
+    type: Number
+    permission: read-only
+
+  - name: ANNOTATION_BLUE
+    summary: |
+        Color constant used to set a map annotation to blue via the
+        <Modules.Map.Annotation.pincolor> property.
+    type: Number
+    permission: read-only
+    platforms: [android]
+
+  - name: ANNOTATION_AZURE
+    summary: |
+        Color constant used to set a map annotation to azure via the
+        <Modules.Map.Annotation.pincolor> property.
+    type: Number
+    permission: read-only
+    platforms: [android]
+
+  - name: ANNOTATION_CYAN
+    summary: |
+        Color constant used to set a map annotation to cyan via the
+        <Modules.Map.Annotation.pincolor> property.
+    type: Number
+    permission: read-only
+    platforms: [android]
+
+  - name: ANNOTATION_MAGENTA
+    summary: |
+        Color constant used to set a map annotation to magenta via the
+        <Modules.Map.Annotation.pincolor> property.
+    type: Number
+    permission: read-only
+    platforms: [android]
+
+  - name: ANNOTATION_ORANGE
+    summary: |
+        Color constant used to set a map annotation to orange via the
+        <Modules.Map.Annotation.pincolor> property.
+    type: Number
+    permission: read-only
+    platforms: [android]
+
+  - name: ANNOTATION_PURPLE
+    summary: |
+        Color constant used to set a map annotation to purple via the
+        <Modules.Map.Annotation.pincolor> property.
+    type: Number
+    permission: read-only
+    platforms: [iphone, ipad]
+
+  - name: ANNOTATION_ROSE
+    summary: |
+        Color constant used to set a map annotation to rose via the
+        <Modules.Map.Annotation.pincolor> property.
+    type: Number
+    permission: read-only
+    platforms: [android]
+
+  - name: ANNOTATION_YELLOW
+    summary: |
+        Color constant used to set a map annotation to yellow via the
+        <Modules.Map.Annotation.pincolor> property.
+    type: Number
+    permission: read-only
+    platforms: [android]
+
+  - name: ANNOTATION_VIOLET
+    summary: |
+        Color constant used to set a map annotation to violet via the
+        <Modules.Map.Annotation.pincolor> property.
+    type: Number
+    permission: read-only
+    platforms: [android]
+
+  - name: ANNOTATION_RED
+    summary: |
+        Color constant used to set a map annotation to red via the
+        <Modules.Map.Annotation.pincolor> property.
+    type: Number
+    permission: read-only
+
+  - name: SATELLITE_TYPE
+    summary: Used with [mapType](Modules.Map.View.mapType) to display satellite imagery of the area.
+    type: Number
+    permission: read-only
+
+  - name: SATELLITE_FLYOVER_TYPE
+    summary: Used with [mapType](Modules.Map.View.mapType) to display satellite flyover imagery of the area. Available in iOS 9.0 and later.
+    type: Number
+    permission: read-only
+    platforms: [iphone, ipad]
+
+  - name: NORMAL_TYPE
+    summary: Used with [mapType](Modules.Map.View.mapType) to display a street map that shows the position of all roads and some road names.
+    type: Number
+    permission: read-only
+
+  - name: TERRAIN_TYPE
+    summary: Used with [mapType](Modules.Map.View.mapType) to display the terrain that shows the position of all roads and some road names.
+    type: Number
+    permission: read-only
+    platforms: [android]
+
+  - name: HYBRID_TYPE
+    summary: Used with [mapType](Modules.Map.View.mapType) to display a satellite image of the area with road and road name information layered on top.
+    type: Number
+    permission: read-only
+
+  - name: HYBRID_FLYOVER_TYPE
+    summary: Used with [mapType](Modules.Map.View.mapType) to display a satellite flyover image of the area with road and road name information layered on top. Available in iOS 9.0 and later.
+    type: Number
+    permission: read-only
+    platforms: [iphone, ipad]
+
+  - name: SUCCESS
+    summary: Code returned from <Modules.Map.isGooglePlayServicesAvailable>. Google Play services is available, and the connection is successful.
+    type: Number
+    permission: read-only
+    platforms: [android]
+
+  - name: SERVICE_MISSING
+    summary: Code returned from <Modules.Map.isGooglePlayServicesAvailable>. Google Play services is not installed on the device.
+    type: Number
+    permission: read-only
+    platforms: [android]
+
+  - name: SERVICE_VERSION_UPDATE_REQUIRED
+    summary: Code returned from <Modules.Map.isGooglePlayServicesAvailable>. Google Play services is out of date.
+    type: Number
+    permission: read-only
+    platforms: [android]
+
+  - name: SERVICE_DISABLED
+    summary: Code returned from <Modules.Map.isGooglePlayServicesAvailable>. Google Play services has been disabled on this device.
+    type: Number
+    permission: read-only
+    platforms: [android]
+
+  - name: SERVICE_INVALID
+    summary: Code returned from <Modules.Map.isGooglePlayServicesAvailable>. The version of Google Play services installed on this device is not authentic.
+    type: Number
+    permission: read-only
+    platforms: [android]
+
+  - name: OVERLAY_LEVEL_ABOVE_LABELS
+    summary: Place the overlay above roadways but below map labels, shields, or point-of-interest icons. Available in iOS 7.0 and later.
+    type: Number
+    permission: read-only
+    since: "3.2.0"
+    platforms: [iphone, ipad]
+
+  - name: OVERLAY_LEVEL_ABOVE_ROADS
+    summary: |
+        Place the overlay above map labels, shields, or point-of-interest icons but below annotations and 3D projections of buildings.
+        Available in iOS 7.0 and later.
+    type: Number
+    permission: read-only
+    since: "3.2.0"
+    platforms: [iphone, ipad]
+
+methods:
+  - name: isGooglePlayServicesAvailable
+    returns:
+        type: Number
+        summary: |
+            One of the following status codes:
+            <Modules.Map.SUCCESS>, <Modules.Map.SERVICE_MISSING>,
+            <Modules.Map.SERVICE_VERSION_UPDATE_REQUIRED>,
+            <Modules.Map.SERVICE_DISABLED> or <Modules.Map.SERVICE_INVALID>.
+    summary: Returns a code to indicate whether Google Play Services is available on the device.
+    since: "3.1.1"
+    platforms: [android]
+
+examples:
+
+  - title: Map Example
+    example: |
+        This is a basic map example that places a custom annotation on the map, and
+        listens for click events on the annotation.
+
+        In this example, a custom property (`myid`) is added to the annotation object.
+        While adding custom members to a Titanium object is not generally recommended,
+        in this case it provides a mechanism for uniquely identifying an annotation. This
+        can be useful, for example, if the annotations are dynamically generated
+        and it is not practical to identify them by title.
+
+            var Map = require('ti.map');
+            var win = Titanium.UI.createWindow();
+
+            var mountainView = Map.createAnnotation({
+                latitude:37.390749,
+                longitude:-122.081651,
+                title:"Appcelerator Headquarters",
+                subtitle:'Mountain View, CA',
+                pincolor:Map.ANNOTATION_RED,
+                myid:1 // Custom property to uniquely identify this annotation.
+            });
+
+            var mapview = Map.createView({
+                mapType: Map.NORMAL_TYPE,
+                region: {latitude:33.74511, longitude:-84.38993,
+                        latitudeDelta:0.01, longitudeDelta:0.01},
+                animate:true,
+                regionFit:true,
+                userLocation:true,
+                annotations:[mountainView]
+            });
+
+            var circle = Map.createCircle({
+                center: { latitude: 33.74511, longitude: -84.38993 },
+                radius: 1000, //1km
+                fillColor: "#20FF0000"
+            });
+            mapview.addCircle(circle);
+
+            win.add(mapview);
+            // Handle click events on any annotations on this map.
+            mapview.addEventListener('click', function(evt) {
+                Ti.API.info("Clicked " + evt.clicksource + " on " + evt.latitude + "," + evt.longitude);
+            });
+            win.open();
+            
+  - title: Alloy XML Markup
+    example: |
+        Previous example as an Alloy view.
+
+        In XML markup, use the `View` element with the `module` attribute set to `ti.map` to create an
+        instance of a map view, then use the `Annotation` element to define an annotation.
+
+        In the initializer file, load the map module and assign it to the `Alloy.Globals.Map` namespace.
+        This variable can be used to reference map module constants in the project, as seen in the TSS
+        file to assign the `pincolor` attribute.
+
+        `alloy.js`:
+
+            // Loads the map module, which can be referenced by Alloy.Globals.Map
+            Alloy.Globals.Map = require("ti.map");
+
+        `app/views/index.xml`:
+
+            <Alloy>
+                <Window>
+                    <Module id="mapview" module="ti.map" onClick="report" method="createView">
+                        <Annotation id="appcHQ" myId="1337" />
+                    </Module>
+                </Window>
+            </Alloy>
+
+        `app/styles/index.tss`:
+
+            "#mapview" : {
+                region : {
+                    latitude:33.74511,
+                    longitude:-84.38993,
+                    latitudeDelta:0.01,
+                    longitudeDelta:0.01
+                }
+            },
+            "#appcHQ" : {
+                latitude: 37.368122,
+                longitude: -121.913653,
+                title: "Appcelerator Headquarters",
+                subtitle: "San Jose, CA",
+                pincolor: Alloy.Globals.Map.ANNOTATION_RED
+            }
+
+
+        `app/controllers/index.js`:
+
+            function report(e) {
+                Ti.API.info("Annotation " + e.title + " clicked, ID: " + e.annotation.myID);
+            }
+
+            $.index.open();

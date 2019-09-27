@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>ti.map</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+	</buildSpec>
+	<natures>
+        <nature>org.eclipse.jdt.core.javanature</nature>
+        <nature>com.appcelerator.titanium.mobile.nature</nature>
+        <nature>com.appcelerator.titanium.mobile.module.nature</nature>
+	</natures>
+</projectDescription>

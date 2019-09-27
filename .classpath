@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="android/src"/>
+	<classpathentry kind="src" path="android/build/.apt_generated"/>
+	<classpathentry kind="src" path=".apt_generated"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/Users/fuerst/Library/Android/sdk/platforms/android-23/android.jar"/>
+	<classpathentry kind="lib" path="/Library/Application Support/Titanium/mobilesdk/osx/5.5.1.GA/android/titanium.jar"/>
+	<classpathentry kind="lib" path="/Library/Application Support/Titanium/mobilesdk/osx/5.5.1.GA/android/kroll-common.jar"/>
+	<classpathentry kind="lib" path="/Library/Application Support/Titanium/mobilesdk/osx/5.5.1.GA/android/kroll-apt.jar"/>
+	<classpathentry kind="lib" path="/opt/android-sdk/extras/android/support/v4/android-support-v4.jar"/>
+	<classpathentry kind="lib" path="/opt/android-sdk/extras/android/support/annotations/android-support-annotations.jar"/>
+	<classpathentry kind="lib" path="/opt/android-sdk/tools/support/annotations.jar"/>
+	<classpathentry kind="lib" path="/opt/android-sdk/add-ons/addon-google_apis-google-23/libs/maps.jar"/>
+	<classpathentry kind="lib" path="/Users/fuerst/Documents/APPC_WORKSPACE/ti.map/android/lib/google-play-services-base-10.2.0.jar"/>
+	<classpathentry kind="lib" path="/Users/fuerst/Documents/APPC_WORKSPACE/ti.map/android/lib/google-play-services-map-10.2.0.jar"/>
+	<classpathentry kind="lib" path="/Users/fuerst/Documents/APPC_WORKSPACE/ti.map/android/lib/google-play-services-basement-10.2.0.jar"/>
+	<classpathentry kind="lib" path="/Users/fuerst/Documents/APPC_WORKSPACE/ti.map/android/lib/google-play-services-location-10.2.0.jar"/>
+	<classpathentry kind="lib" path="/Users/fuerst/Documents/TiFirebase/Ti.MapPlus/android/lib/svg-android-2.0.7.jar"/>
+	<classpathentry kind="lib" path="/Users/fuerst/Documents/TiFirebase/Ti.MapPlus/android/lib/jcoord-1.0.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

@@ -1,0 +1,163 @@
+---
+name: Modules.Map.Annotation
+summary: Represents a labeled point of interest on the map that the user can click on.
+description: |
+    The `Annotation` object gives you low-level control over annotations that can be added to 
+    [map view](Modules.Map.View). An annotation must have its `latitude` and `longitude`
+    properties set to appear on a map.
+
+    Use the <Modules.Map.createAnnotation> method to create an annotation.  Starting with Alloy
+    1.4.0, use the **`<Annotation>`** Alloy element to define one in XML markup.
+
+    An annotation can also have a title, a subtitle, and two inset buttons or views on the left
+    and right side of the title. All of these items are optional.
+
+    The controls on the left and right side of the annotation can be specified in one of two
+    ways:
+
+    * To display an image, set the [leftButton](Titanium.Map.Annotation.leftButton) or 
+      [rightButton](Titanium.Map.Annotation.rightButton) property to an image URL. (On 
+      iOS, you can also use a [SystemButton](Titanium.UI.iPhone.SystemButton) constant 
+      to use one of the native system button icons.) 
+
+    * To add another type of view to the annotation, set the 
+      [leftView](Titanium.Map.Annotation.leftView) or 
+      [rightView](Titanium.Map.Annotation.rightView) property to a [View](Titanium.UI.View)
+      object.
+
+    An annotation has two states: selected and deselected. A deselected annotation
+    is marked by a pin image. When the user selects the pin, the full annotation is 
+    displayed.
+
+    You can specify a custom image for the map pin by setting the
+    [image](Modules.Map.Annotation.image) property. 
+
+    When the user clicks on an annotation, a `click` event is generated. 
+
+    On iOS, You can add a click event listener to a specific annotation, or add a 
+    click event listener to the map view to receive click events from all annotations 
+    on the map.
+
+    On Android, you must add the click event listener to the map view; the annotation
+    itself does not generate these events. 
+
+extends: Titanium.Proxy
+since: { android: "3.0.2", iphone: "3.2.0", ipad: "3.2.0" }
+platforms: [android, iphone, ipad]
+
+properties:
+
+  - name: canShowCallout
+    summary: Defines whether the annotation view is able to display extra information in a callout bubble.
+    description: |
+        When this is set to `true`, the annotation view shows the callout bubble on selection.
+        Set this to `false` to disabled the showing of the callout bubble on selection.
+        This must be set before the annotation is added to the map.
+
+        If this value is undefined, the value is treated as **explicit true**.
+    type: Boolean
+    platforms: [iphone, ipad]
+
+  - name: centerOffset
+    summary: Defines a center offset point for the annotation.
+    description: |
+        By default, the center point of an annotation view is placed at the coordinate point of the
+        associated annotation. Use this property to reposition the annotation view as needed.
+        Positive offset values move the annotation view down and right, while negative values
+        move it up and left.
+    type: Point
+    platforms: [android, iphone, ipad]
+
+  - name: customView
+    summary: Defines a custom view to be used by the annotation.
+    description: |
+        Must be set during creation. **User interaction is disabled on the view.**
+        No view interaction events (click, touchstart etc) will be fired.
+    type: Titanium.UI.View
+    since: "3.1.0"
+
+  - name: draggable
+    summary: Determines whether the pin can be dragged by the user.
+    description: |
+        When an annotation is draggable, it can be moved by the user by long pressing on the pin.
+    type: Boolean
+    default: false
+
+  - name: image
+    summary: Image to use for the the pin.
+    description: |
+        Must be set during creation. This is ignored if the customView property is set.
+    type: [String, Titanium.Blob]
+    default: If not specified, a standard map pin image is used.
+
+  - name: latitude 
+    summary: Latitude of the annotation, in decimal degrees.
+    type: Number
+
+  - name: longitude
+    summary: Longitude of the annotation, in decimal degrees.
+    type: Number
+
+  - name: pincolor
+    summary: |
+        Pin color.
+    description: |
+        Pin color is ignored if a custom pin image is specified using <Modules.Map.Annotation.image>.
+    type: Number
+
+  - name: subtitle
+    summary: Secondary title of the annotation view.
+    type: String
+
+  - name: subtitleid
+    summary: Key in the locale file to use for the subtitle property.
+    type: String
+    since: "3.1.0"
+
+  - name: title
+    summary: Primary title of the annotation view.
+    type: String
+
+  - name: titleid
+    summary: Key in the locale file to use for the title property.
+    type: String
+    since: "3.1.0"
+
+  - name: leftButton
+    summary: |
+        Left button image on the annotation, specified as an image URL.
+    type: String
+    since: "3.1.0"
+
+  - name: leftView
+    summary: Left view that is displayed on the annotation.
+    description: |
+        This is ignored if the `leftButton` property is set.
+    type: Titanium.UI.View
+    since: "3.1.0"
+
+  - name: rightButton
+    summary: |
+        Right button image on the annotation, specified as an image URL.
+    type: String
+    since: "3.1.0"
+
+  - name: rightView
+    summary: Right view that is displayed on the annotation.
+    description: |
+        This is ignored if the `rightButton` property is set.
+    type: Titanium.UI.View
+    since: "3.1.0"
+  
+  - name: showInfoWindow
+    summary: Show or hide the view that is displayed on the annotation when clicked.
+    description: |
+        When this is false, clicking on the annotation will not center it on the map, but the
+        annotation will still be selected, thus triggering the click event.
+        If the annotation is selected, and the info window is hidden, then the next click
+        will deselect the annotation, thus will NOT show the info window, regardless of the current state of this property.
+    type: Boolean
+    default: true
+    since: "3.2.0"
+    platforms: [android]
+    
