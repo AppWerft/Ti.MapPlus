@@ -193,7 +193,7 @@ Ti.Map.createRoute({
 
 ## Pattern in routes (dotted, dashed …)
 
-<img src="https://raw.githubusercontent.com/AppWerft/ti.map/master/screens/dotted.png" width=400 />
+<img src="https://raw.githubusercontent.com/AppWerft/Ti.MapPlus/master/screens/dotted.png" width=400 />
 
 ```javascript
 var patternItem = Ti.Map.createPatternItem({
@@ -230,34 +230,9 @@ var Route = Ti.Map.createRoute({
 mapView.addRoute(Route);
 ```
 
-<img src="https://raw.githubusercontent.com/AppWerft/ti.map/master/screens/ants.gif" width=400/>
+<img src="https://raw.githubusercontent.com/AppWerft/Ti.MapPlus/master/screens/ants.gif" width=400/>
 
 
-## Custome styles maps
-<img src="https://developers.google.com/maps/documentation/android-api/images/style-night.png" width=300/>
-You can use the same json as for web. Here is the [wizard to do this](https://mapstyle.withgoogle.com/)
 
-### Usage
 
-```javascript
-Ti.Map = require("ti.map");
-var mapView = Ti.Map.createView({
-	mapStyle : JSONSTRING,
-	region: {
-	},
-	mapType : Ti.Map.MAP_TYPE_NORMAL
-});
-```
 
-Example for JSONSTRING you can find in root of this module project.
-
-## ClusterManager
-This is still in heavy WIP. First the interface:
-```javascript
-
-var clusterItem = Ti.Map.createClusterItem({}): // similar Annotation
-var CM = Ti.Map.createClusterManager({
-    algorithm : Ti.Map.ALGORITHM_GRID_BASE // or Ti.Map.ALGORITHM_NONHIERARCHICAL_DISTANCE_BASED
-    items : [clusterItem]
-});
-```
