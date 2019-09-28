@@ -422,5 +422,12 @@
 			"maxZoom": 18,
 			"subdomains": "0123"
 		}
+	},
+	"IGNCadastralParcels": {
+		"url": "http://wxs.ign.fr/choisirgeoportail/geoportail/wmts?gp-ol-ext=2.0.0&layer=CADASTRALPARCELS.PARCELS&style=normal&tilematrixset=PM&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image%2Fjpeg&TileMatrix={z}&TileCol={x}&TileRow={y}",
+		"options": {
+			"maxZoom": 19,
+			"attribution": "Map data: {\"attribution\".OpenStreetMap}, <a href=\"http://viewfinderpanoramas.org\">SRTM</a> | Map style: © <a href=\"https://opentopomap.org\">OpenTopoMap</a> (<a href=\"https://creativecommons.org/licenses/by-sa/3.0/\">CC-BY-SA</a>)"
+		}
 	}
 }
