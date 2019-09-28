@@ -130,7 +130,7 @@ mapView.stopRotate();
 
 ## Heatmaps
 Heatmaps are useful for representing the distribution and density of data points on a map.
-<img src="https://i.stack.imgur.	com/FkVco.jpg" width=400 />
+<img src="https://i.stack.imgur.com/FkVco.jpg" width=400 />
 
 ```javascript
 var heatMap  = Ti.Map.createHeatmapOverlay({
