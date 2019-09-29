@@ -21,9 +21,9 @@ A couple of formats are supported.
 * Bing
 * Here
 
-```javascript
+
 ### OSM (Slippy map tilenames)
-```
+
 Map.addOverlay(Map.createTileLayer({
 	osm : {
 		type : 'Stamen/Watercolor',
