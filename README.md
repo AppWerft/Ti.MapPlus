@@ -24,8 +24,30 @@ A couple of formats are supported.
 
 ### Slippy map tilenames (OSM and others)
 
+The most tile providers uses this simple format. You can use this syntax:
+
 ```
 Map.addOverlay(Map.createTileLayer({
+	osm : {
+	   url : ''		
+	}
+));
+```
+Or you can use symbolic names for tiles. To get all available tiles:
+
+```javascript
+var providerList = Ti.Map.createTileProviderFactory();
+providerList.getAllProviderNames(); 
+// ["OpenStreetMap","OpenSeaMap","OpenTopoMap","Thunderforest","OpenMapSurfer","Hydda","MapBox","Stamen","Esri","OpenWeatherMap","FreeMapSK","MtbMap","CartoDB","HikeBike","BasemapAT","NASAGIBS","NLS"]
+
+var variants = factory.getAllVariantNamesByProvider("Stamen");  // gives list of all variants
+//  ["Toner","TonerBackground","TonerHybrid","TonerLines","TonerLabels","TonerLite","Watercolor","Terrain","TerrainBackground","TopOSMRelief","TopOSMFeatures"]
+```
+
+With knowledge of anme you can call:
+
+```
+Map.addTileOverlay(Map.createTileLayer({
 	osm : {
 		type : 'Stamen/Watercolor',
 		apikey : "fgsuna73hdfod72h"  // optional (mapbox)
@@ -63,41 +85,11 @@ Map.addOverlay(Map.createTileLayer({
 		tilematrixset : 'PM',
 		layer : 'GEOGRAPHICALGRIDSYSTEMS.MAPS',
 		format : 'image/jpeg',
-		style : normal,
-		gp-ol-ext : '2.0.0'
+		style : normal		
 	}
 }));
 ```
 
-
-### TMS
-
-TMS is a protocol created by OSGeo that allows tiles to be requested using integer indices.
- It also provides metadata for discovery and configuration. It can be implemented as a set of tile images and metadata files sitting in a static file system. Y axis goes up from the bottom.
-A common partial implementation of TMS provides something similar to Slippy map tilenames (osm) but with one important, and somewhat annoying difference. The Y coordinates are numbered from the south northwards (like latitudes and graphical/bitmap axes) in the TMS standard whereas google tile coordinates have their origin at top left (NW). This is really just an unfortunate historical misalignment. 
-```
-Map.addOverlay(Map.createTileLayer({
-	url : ''
-	
-}));
-```
-
-### Bing
-
-
-
-
-
-const Overlay = require("ti.map.overlay");
-var mapView = Ti.Map.createView();
-var weatherOverlay =  Ti.Map.createTileOverlay({
-    tileProvider : "OpenWeatherMap/RainClassic"
-    accessToken : ACCESS_TOKEN, // only for MapBox
-    opacity : 0.7,
-    type : Map.TYPE_TMS  // default
-});
-mapView.addTileOverlay(weatherOverlay);
-```
 ### Exploring database of TileProviders
 For retreiving all possible variants of TileProviders and variants:
 
