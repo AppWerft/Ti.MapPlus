@@ -1,4 +1,4 @@
-# Titanium Map Module 
+# Titanium Map.Overlays Module 
 
 This is the Map Module for Titanium extended by TileOverlays. 
 
