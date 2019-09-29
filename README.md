@@ -3,8 +3,8 @@
 This is the Map Module for Titanium extended by TileOverlays. 
 
 
-<img src="https://raw.githubusercontent.com/AppWerft/Ti.MapPlus/master/screens/watercolor.png" width=400 /> <img src="https://raw.githubusercontent.com/AppWerft/Ti.MapPlus/master/screens/mapstyles.png" width=400 /> <img src="https://raw.githubusercontent.com/AppWerft/Ti.MapPlus/master/screens/Screenshot_20170219-112805.png" width=400 /> 
-<img src="https://raw.githubusercontent.com/AppWerft/Ti.MapPlus/master/screens/Screenshot_20170219-114755.png" width=400 /> <img src="https://raw.githubusercontent.com/AppWerft/Ti.MapPlus/master/screens/osmsea.png" width=400 />
+<img src="https://raw.githubusercontent.com/AppWerft/Ti.MapPlus/master/screens/watercolor.png" width=300 /> <img src="https://raw.githubusercontent.com/AppWerft/Ti.MapPlus/master/screens/mapstyles.png" width=300 /> <img src="https://raw.githubusercontent.com/AppWerft/Ti.MapPlus/master/screens/Screenshot_20170219-112805.png" width=300 /> 
+<img src="https://raw.githubusercontent.com/AppWerft/Ti.MapPlus/master/screens/Screenshot_20170219-114755.png" width=300 /> <img src="https://raw.githubusercontent.com/AppWerft/Ti.MapPlus/master/screens/osmsea.png" width=300 />
 
 
 ## Usage
@@ -13,6 +13,12 @@ This is the Map Module for Titanium extended by TileOverlays.
 
 The module extends appcelerator's ti.map with raster based overlays in wgs84 (web mercator) projection.
 A couple of formats are supported.
+
+* OSM
+* WMS
+* WMTS
+* TMS
+* Bing
 
 ```javascript
 const Overlay = require("ti.map.overlay");
