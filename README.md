@@ -14,13 +14,9 @@ This is the Map Module for Titanium extended by TileOverlays.
 The module extends appcelerator's ti.map with raster based overlays in wgs84 (web mercator, epsg:4326) projection.
 A couple of formats are supported.
 
-* OSM
+* Slippy map tilenames (OSM and others)
 * WMS
 * WMTS
-* TMS
-* Bing
-* Here
-
 
 ### Slippy map tilenames (OSM and others)
 
