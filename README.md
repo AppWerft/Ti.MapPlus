@@ -15,7 +15,6 @@ The module extends appcelerator's ti.map with raster based overlays in wgs84 (we
 A couple of formats are supported.
 
 * XYZ – Slippy map (OSM, mapbox, Google, MapQuest …)
-* TMS 
 * WMS
 * WMTS
 
@@ -53,16 +52,6 @@ Map.addTileOverlay(Map.createTileLayer({
 ));
 ```
 
-### TMS 
-TMS is similar XYZ, but with inverted y-axis.
-
-```javascript
-Map.addOverlay(Map.createTileLayer({
-	tms : {
-	   url : ''		
-	}
-));
-```
 
 ### WMS
 
@@ -76,8 +65,8 @@ Map.addOverlay(Map.createTileLayer({
 		format : 'png',
 		transparent : true,
 		layers : ['strassenbaum'],
-		styles : [''],
-		crs : 'epsg:4326',
+		styles : ['a',‘b‘], // optional
+		crs : 'epsg:4326',  // optional
 		tiles : true
 }));
 ```
@@ -94,24 +83,9 @@ Map.addOverlay(Map.createTileLayer({
 		tilematrixset : 'PM',
 		layer : 'GEOGRAPHICALGRIDSYSTEMS.MAPS',
 		format : 'image/jpeg',
-		style : normal		
+		style : 'normal'		
 	}
 }));
-```
-
-### Exploring database of TileProviders
-For retreiving all possible variants of TileProviders and variants:
-
-```javascript
-var providerList = Ti.Map.createTileProviderFactory();
-
-providerList.getAllProviderNames(); 
-// ["OpenStreetMap","OpenSeaMap","OpenTopoMap","Thunderforest","OpenMapSurfer","Hydda","MapBox","Stamen","Esri","OpenWeatherMap","FreeMapSK","MtbMap","CartoDB","HikeBike","BasemapAT","NASAGIBS","NLS"]
-
-var variants = factory.getAllVariantNamesByProvider("Stamen");  // gives list of all variants
-//  ["Toner","TonerBackground","TonerHybrid","TonerLines","TonerLabels","TonerLite","Watercolor","Terrain","TerrainBackground","TopOSMRelief","TopOSMFeatures"]
-
-var variant = factory.getVariant("Stamen","WaterColor");
 ```
 
 ### Getting static tiles
