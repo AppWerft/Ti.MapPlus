@@ -14,17 +14,19 @@ This is the Map Module for Titanium extended by TileOverlays.
 The module extends appcelerator's ti.map with raster based overlays in wgs84 (web mercator, epsg:4326) projection.
 A couple of formats are supported.
 
-* Slippy map tilenames (OSM and others)
+* XYZ – Slippy map (OSM, mapbox, Google, MapQuest …)
+* TMS 
 * WMS
 * WMTS
 
-### Slippy map tilenames (OSM and others)
+
+### XYZ
 
 The most tile providers uses this simple format. You can use this syntax:
 
 ```
 Map.addOverlay(Map.createTileLayer({
-	osm : {
+	xyz : {
 	   url : 'http://stamen-tiles-a.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.png'		
 	}
 ));
@@ -44,9 +46,20 @@ With knowledge of anme you can call:
 
 ```
 Map.addTileOverlay(Map.createTileLayer({
-	osm : {
+	xyz : {
 		type : 'Stamen/Watercolor',
 		apikey : "fgsuna73hdfod72h"  // optional (mapbox)
+	}
+));
+```
+
+### TMS 
+TMS is similar XYZ, but with inverted y-axis.
+
+```javascript
+Map.addOverlay(Map.createTileLayer({
+	tms : {
+	   url : ''		
 	}
 ));
 ```
