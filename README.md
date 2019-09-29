@@ -60,9 +60,11 @@ Map.addOverlay(Map.createTileLayer({
 	wtms : {
 		url : 'http://wxs.ign.fr/choisirgeoportail/geoportail/wmts',
 		version : '1.1.0',
-		tilematrixset : '',
+		tilematrixset : 'PM',
 		layer : 'GEOGRAPHICALGRIDSYSTEMS.MAPS',
-		format : 'jpeg'
+		format : 'image/jpeg',
+		style : normal,
+		gp-ol-ext : '2.0.0'
 	}
 }));
 ```
