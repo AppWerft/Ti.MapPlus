@@ -29,7 +29,7 @@ The most tile providers uses this simple format. You can use this syntax:
 ```
 Map.addOverlay(Map.createTileLayer({
 	osm : {
-	   url : ''		
+	   url : 'http://stamen-tiles-a.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.png'		
 	}
 ));
 ```
