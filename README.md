@@ -14,7 +14,7 @@ This is the Map Module for Titanium extended by TileOverlays.
 The module extends appcelerator's ti.map with raster based overlays in wgs84 (web mercator, epsg:4326) projection.
 A couple of formats are supported.
 
-* XYZ – Slippy map (OSM, mapbox, Google, MapQuest …)
+* XYZ – Slippy map (TMS, OSM, mapbox, Google, MapQuest …)
 * WMS
 * WMTS
 
@@ -26,11 +26,16 @@ The most tile providers uses this simple format. You can use this syntax:
 ```
 Map.addOverlay(Map.createTileLayer({
 	xyz : {
-	   url : 'http://stamen-tiles-a.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.png'		
+	   url : 'http://stamen-tiles-a.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.png',
+	   toupper : true  // optional id y axis is counted from bottom to to
 	}
 ));
 ```
-Or you can use symbolic names for tiles. To get all available tiles:
+"XYZ" is the term we use for various ad hoc schemes for serving tiles, often from a static file system. There's no standard and no mechanism for metadata. There's no fixed standard for Y axis direction although down from the top is most common. Google did something for their own purposes, and other people sort of copied it. With parameter `toupper` you can control it.
+
+
+#### Usage of symbolic names
+You can use symbolic names for tiles. To get all available tiles:
 
 ```javascript
 var providerList = Ti.Map.createTileProviderFactory();
