@@ -7,11 +7,15 @@ This is the Map Module for Titanium extended by TileOverlays.
 <img src="https://raw.githubusercontent.com/AppWerft/Ti.MapPlus/master/screens/Screenshot_20170219-114755.png" width=400 /> <img src="https://raw.githubusercontent.com/AppWerft/Ti.MapPlus/master/screens/osmsea.png" width=400 />
 
 
-##Usage
+## Usage
 
 ### Using of TileOverlays
+
+The module extends appcelerator's ti.map with raster based overlays in wgs84 (web mercator) projection.
+A couple of formats are supported.
+
 ```javascript
-Ti.Map = require("ti.map");
+const Overlay = require("ti.map.overlay");
 var mapView = Ti.Map.createView();
 var weatherOverlay =  Ti.Map.createTileOverlay({
     tileProvider : "OpenWeatherMap/RainClassic"
