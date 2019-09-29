@@ -19,8 +19,72 @@ A couple of formats are supported.
 * WMTS
 * TMS
 * Bing
+* Here
 
 ```javascript
+### OSM (Slippy map tilenames)
+```
+Map.addOverlay(Map.createTileLayer({
+	osm : {
+		type : 'Stamen/Watercolor',
+		apikey : "fgsuna73hdfod72h"  // optional (mapbox)
+	}
+));
+```
+
+### WMS
+
+WMS is a protocol defined by the OGC for requesting rendered map images for arbitrary areas. Clients can make requests to it in a tiled pattern if they wish.
+
+```
+Map.addOverlay(Map.createTileLayer({
+	wms : {
+		url :'https://geodienste.hamburg.de/HH_WMS_Strassenbaumkataster',
+		version : "1.3.0",
+		format : 'png',
+		transparent : true,
+		layers : ['strassenbaum'],
+		styles : [''],
+		crs : 'epsg:4326',
+		tiles : true
+}));
+```
+
+### WMTS
+
+WMTS is a protocol created by the OGC that allows tiles to be requested using integer indices. It also provides metadata for discovery and configuration. Y axis goes down from the top.
+
+```
+Map.addOverlay(Map.createTileLayer({
+	wtms : {
+		url : 'http://wxs.ign.fr/choisirgeoportail/geoportail/wmts',
+		version : '1.1.0',
+		tilematrixset : '',
+		layer : '',
+		format : 'jpeg'
+	}
+}));
+```
+
+
+### TMS
+
+TMS is a protocol created by OSGeo that allows tiles to be requested using integer indices.
+ It also provides metadata for discovery and configuration. It can be implemented as a set of tile images and metadata files sitting in a static file system. Y axis goes up from the bottom.
+A common partial implementation of TMS provides something similar to Slippy map tilenames (osm) but with one important, and somewhat annoying difference. The Y coordinates are numbered from the south northwards (like latitudes and graphical/bitmap axes) in the TMS standard whereas google tile coordinates have their origin at top left (NW). This is really just an unfortunate historical misalignment. 
+```
+Map.addOverlay(Map.createTileLayer({
+	url : ''
+	
+}));
+```
+
+### Bing
+
+
+
+
+
 const Overlay = require("ti.map.overlay");
 var mapView = Ti.Map.createView();
 var weatherOverlay =  Ti.Map.createTileOverlay({
