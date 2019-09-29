@@ -22,7 +22,7 @@ A couple of formats are supported.
 * Here
 
 
-### OSM (Slippy map tilenames)
+### Slippy map tilenames (OSM and others)
 
 ```
 Map.addOverlay(Map.createTileLayer({
@@ -61,7 +61,7 @@ Map.addOverlay(Map.createTileLayer({
 		url : 'http://wxs.ign.fr/choisirgeoportail/geoportail/wmts',
 		version : '1.1.0',
 		tilematrixset : '',
-		layer : '',
+		layer : 'GEOGRAPHICALGRIDSYSTEMS.MAPS',
 		format : 'jpeg'
 	}
 }));
