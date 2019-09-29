@@ -41,7 +41,7 @@ var variants = factory.getAllVariantNamesByProvider("Stamen");  // gives list of
 //  ["Toner","TonerBackground","TonerHybrid","TonerLines","TonerLabels","TonerLite","Watercolor","Terrain","TerrainBackground","TopOSMRelief","TopOSMFeatures"]
 ```
 
-With knowledge of anme you can call:
+With knowledge of type name you can call:
 
 ```
 Map.addTileOverlay(Map.createTileLayer({
