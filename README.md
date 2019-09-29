@@ -3,15 +3,15 @@
 This is the Map Module for Titanium extended by TileOverlays. 
 
 
-<img src="https://raw.githubusercontent.com/AppWerft/Ti.MapPlus/master/screens/watercolor.png" width=300 /> <img src="https://raw.githubusercontent.com/AppWerft/Ti.MapPlus/master/screens/mapstyles.png" width=300 /> <img src="https://raw.githubusercontent.com/AppWerft/Ti.MapPlus/master/screens/Screenshot_20170219-112805.png" width=300 /> 
-<img src="https://raw.githubusercontent.com/AppWerft/Ti.MapPlus/master/screens/Screenshot_20170219-114755.png" width=300 /> <img src="https://raw.githubusercontent.com/AppWerft/Ti.MapPlus/master/screens/osmsea.png" width=300 />
+<img src="https://raw.githubusercontent.com/AppWerft/Ti.MapPlus/master/screens/watercolor.png" width=240 /> <img src="https://raw.githubusercontent.com/AppWerft/Ti.MapPlus/master/screens/mapstyles.png" width=240 /> <img src="https://raw.githubusercontent.com/AppWerft/Ti.MapPlus/master/screens/Screenshot_20170219-112805.png" width=240 /> 
+<img src="https://raw.githubusercontent.com/AppWerft/Ti.MapPlus/master/screens/Screenshot_20170219-114755.png" width=240 /> <img src="https://raw.githubusercontent.com/AppWerft/Ti.MapPlus/master/screens/osmsea.png" width=240 />
 
 
 ## Usage
 
 ### Using of TileOverlays
 
-The module extends appcelerator's ti.map with raster based overlays in wgs84 (web mercator) projection.
+The module extends appcelerator's ti.map with raster based overlays in wgs84 (web mercator, epsg:4326) projection.
 A couple of formats are supported.
 
 * OSM
@@ -24,6 +24,7 @@ A couple of formats are supported.
 
 ### OSM (Slippy map tilenames)
 
+```
 Map.addOverlay(Map.createTileLayer({
 	osm : {
 		type : 'Stamen/Watercolor',
